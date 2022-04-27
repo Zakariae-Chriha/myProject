@@ -13,11 +13,17 @@ function Home() {
       </h1>
       <div style={{ width: "60%", zIndex: 2 }}>
         <div className="row ">
-          <div className="col">
-            <button>Ried Books for free</button>
+          <div class="group col">
+            {" "}
+            <input type="submit" class="button" value="Ried Book free" />{" "}
           </div>
-          <div className="col ">
-            <button>Give away OR Sale</button>
+          <div class="group col">
+            {" "}
+            <input
+              type="submit"
+              class="button"
+              value="give away OR sale"
+            />{" "}
           </div>
         </div>
       </div>

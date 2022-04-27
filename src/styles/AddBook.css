@@ -1,0 +1,39 @@
+.containerAdd {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+button,
+.button,
+.button-secondary,
+.button-inverted,
+.iconbox,
+.button-tertiary,
+.button-ghost,
+.button-square,
+.button-feature,
+.button-link,
+.button-browse-base,
+.button-browse-next,
+.button-browse-previous,
+.button-back2top,
+.button-toggle,
+.is-toggled {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  flex-direction: row;
+  font-weight: 700;
+  padding: 0px 16px;
+  outline: none;
+  white-space: nowrap;
+  border: none;
+  background-color: #86b817;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #fff;
+  min-height: 44px;
+  height: 44px;
+  line-height: 130%;
+  font-size: 14px;
+  width: auto;
+}
