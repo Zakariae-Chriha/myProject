@@ -5,11 +5,11 @@ function Profil() {
   return (
     <div className="image-profil ">
       <div>
-        <img src="http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g" />
+        <img src="http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g" alt="" />
         <select>
           <option>
             <Link to="/AddBook">
-              <a href="">AddBook</a>
+              <a href="#" >AddBook</a>
             </Link>
           </option>
           <option>
