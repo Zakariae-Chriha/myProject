@@ -13,6 +13,7 @@ function AddBook() {
   const [bookslist, setBookslist] = useState("");
   const [newBooks, setNewBooks] = useState("");
   const [category, setCategory] = useState("");
+  const [publisher, setPublisher] = useState("");
   const [userImage, setUserImage] = useState({ file: null });
   const [userImageUrl, setUserImageUrl] = useState("");
 
@@ -22,12 +23,12 @@ function AddBook() {
 
   const getAllBooks = () => {
     axios
-      .get("http://localhost:5000/read")
+      .get("http://localhost:8000/read")
       .then((response) => setBookslist(response.data))
       .catch((Error) => console.log(Error));
   };
   const updateBooks = (id) => {
-    axios.put(`http://localhost:5000/update/${id}`, {
+    axios.put(`http://localhost:8000/update/${id}`, {
       userImage: userImageUrl,
       title: title,
       authors: authors,
@@ -38,7 +39,7 @@ function AddBook() {
   };
 
   const deletebooks = (id) => {
-    axios.delete(`http://localhost:5000/delete/${id}`);
+    axios.delete(`http://localhost:8000/delete/${id}`);
     getAllBooks();
   };
 
@@ -53,17 +54,19 @@ function AddBook() {
     formData.append("profile_pic", userImage);
 
     axios
-      .post("http://localhost:5000/upload-profile-pic", formData, {})
+      .post("http://localhost:8000/upload-profile-pic", formData, {})
       .then((res) => setUserImageUrl(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .post("http://localhost:5000/insert", {
+      .post("http://localhost:8000/insert", {
         userImage: userImageUrl,
         title: title,
         authors: authors,
         description: description,
         category: category,
+        publisher: publisher,
+        preice: preice,
       })
       .then((response) => {
         console.log(response);
@@ -177,6 +180,20 @@ function AddBook() {
             </small>
           </div>
         </div>
+        <label class="formgroup-label" for="postad-publisher">
+          publisher :
+        </label>
+        <div class="formgroup-input">
+          <input
+            id="postad-publisher"
+            name="au"
+            class="formcontrol"
+            type="text"
+            maxlength="65"
+            placeholder="publisher"
+            onChange={(e) => setPublisher(e.target.value)}
+          />
+        </div>
         <br />
         <div class="formgroup">
           <label class="formgroup-label" for="pstad-bilder">
@@ -203,8 +220,6 @@ function AddBook() {
       <div className="addBook2 col">
         <img src="" alt="" />
       </div>
-
-      <h1> Books Liste</h1>
     </div>
   );
 }

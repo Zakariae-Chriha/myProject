@@ -8,19 +8,26 @@ import Login from "./components/Login";
 import Profil from "./components/Profil";
 import AddBook from "./components/AddBook";
 import BooksListCommunity from "./components/BooksListCommunity";
+import Bookgoogle from "./components/Bookgoogle";
+import EmailForm from "./components/EmailForm";
 
 function App() {
   return (
     <div>
       <Header />
+
       <>
-        <BooksListCommunity />
+     
       </>
       <>
         <Routes>
           <Route path="/Home" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/BooksListCommunity" element={<BooksListCommunity />} />
+          <Route path="/Bookgoogle" element={<Bookgoogle />} />
+          <Route path="/EmailForm" element={<EmailForm />} />
+          <Route path="/AddBook" element={<AddBook />} />
         </Routes>
       </>
     </div>

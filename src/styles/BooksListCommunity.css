@@ -33,3 +33,8 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.btn {
+  color: blue;
+  font-size: 17px;
+  font-weight: bold;
+}

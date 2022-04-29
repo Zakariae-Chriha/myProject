@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Home.css";
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="home-image d-flex justify-content-center align-items-center flex-column">
@@ -14,16 +15,15 @@ function Home() {
       <div style={{ width: "60%", zIndex: 2 }}>
         <div className="row ">
           <div class="group col">
-            {" "}
-            <input type="submit" class="button" value="Ried Book free" />{" "}
+            <Link to="/Bookgoogle">
+              <button type="button">Read Books For Free</button>
+            </Link>
           </div>
           <div class="group col">
             {" "}
-            <input
-              type="submit"
-              class="button"
-              value="give away OR sale"
-            />{" "}
+            <Link to="/BooksListCommunity">
+              <button>Give-away OR Sale</button>{" "}
+            </Link>
           </div>
         </div>
       </div>

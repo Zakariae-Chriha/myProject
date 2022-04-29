@@ -1,12 +1,4 @@
-import {
-  Nav,
-  Button,
-  Navbar,
-  Container,
-  FormControl,
-  Form,
-  Offcanvas,
-} from "react-bootstrap";
+import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
 import React from "react";
 
 function Header() {
@@ -33,15 +25,6 @@ function Header() {
 
                 <Nav.Link href="/Login">Login</Nav.Link>
               </Nav>
-              <Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../styles/BooksListCommunity.css";
 import axios from "axios";
 import { Spinner } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.min.css";
 import BooksListCardCommunity from "../components/BooksListCardCommunity";
 function BooksListCommunity() {
   //stats
+  const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -17,7 +19,7 @@ function BooksListCommunity() {
     setLoading(true);
 
     axios
-      .get("http://localhost:5000/read")
+      .get(`http://localhost:8000/read?category=${category}`)
       .then((response) => {
         setCards(response.data);
         setLoading(false);
@@ -28,16 +30,85 @@ function BooksListCommunity() {
   // Main Show Case
   const mainHeader = () => {
     return (
-      <div className="main-image d-flex justify-content-center align-items-center flex-column">
-        {/* Overlay */}
-        <div className="filter"></div>
-        <h1
-          className="display-2 text-center text-white mb-3"
-          style={{ zIndex: 2 }}
-        >
-          GIVE_AWAY Or sale
-        </h1>
-        <div style={{ width: "60%", zIndex: 2 }}></div>
+      <div className="row">
+        <div className="main-image cal d-flex justify-content-center align-items-center flex-column">
+          {/* Overlay */}
+          <div className="filter"></div>
+          <h1
+            className="display-2 text-center text-white mb-3"
+            style={{ zIndex: 2 }}
+          >
+            GIVE_AWAY Or sale
+          </h1>
+          <div style={{ width: "60%", zIndex: 2 }}></div>
+          <div className="main-image col d-flex justify-content-between align-items-center flex-row">
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Poems")}
+            >
+              {" "}
+              Poems{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Western")}
+            >
+              Western{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" History")}
+            >
+              History{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Non-fiction")}
+            >
+              Non-fiction{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Fairy-tale")}
+            >
+              {" "}
+              Fairy-tale{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Fiction")}
+            >
+              Fiction{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory("Novel ")}
+            >
+              Novel{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onChange={() => setCategory(" Romance")}
+            >
+              Romance{" "}
+            </button>
+            <button
+              className="btn"
+              value={category}
+              onClick={() => setCategory(" Myth")}
+            >
+              Myth{" "}
+            </button>
+          </div>
+        </div>
       </div>
     );
   };
@@ -60,9 +131,15 @@ function BooksListCommunity() {
             <BooksListCardCommunity
               userImage={userImage}
               title={item.title}
+              publisher={item.publisher}
               authors={item.authors}
               description={item.description}
             />
+            <div className="col mt-2 d-flex justify-content-center me-10  ">
+              <Link to="/EmailForm">
+                <button>Send Email</button>
+              </Link>
+            </div>
           </div>
         );
       });
