@@ -127,6 +127,7 @@ function BooksListCommunity() {
               preice={item.preice}
               authors={item.authors}
               description={item.description}
+              preiceType={item.preiceType}
             />
             <div className='col mt-2 d-flex justify-content-center me-10  '>
               <Link to='/EmailForm'>

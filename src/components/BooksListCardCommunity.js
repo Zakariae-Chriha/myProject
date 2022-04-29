@@ -7,6 +7,8 @@ const BooksListCardCommunity = ({
   description,
   category,
   preice,
+  preiceType,
+  publisher,
 }) => {
   // States
   const [modal, setModal] = useState(false)
@@ -42,6 +44,8 @@ const BooksListCardCommunity = ({
             <img src={userImage} alt={title} style={{ height: '233px' }} />
             <div>
               <p>Authors : {authors}</p>
+              <p>Preice : {preice}</p>
+              <p>Preicetyp : {preiceType}</p>
             </div>
           </div>
           <div className='mt-3'>{description}</div>
