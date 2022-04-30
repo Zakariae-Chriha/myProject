@@ -1,8 +1,0 @@
-.image-profil img {
-  border-radius: 50%;
-}
-.image-profil {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}

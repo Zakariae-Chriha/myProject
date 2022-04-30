@@ -51,7 +51,7 @@
   width: 100%;
   background-color: #eee;
   border: 1px solid rgba(0, 0, 0, 0.48);
-  padding: 5px 10px;
+  padding: 10px 100px;
   margin-bottom: 20px;
 }
 .inside-contact input[type="submit"] {

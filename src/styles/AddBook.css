@@ -27,10 +27,11 @@ button,
   outline: none;
   white-space: nowrap;
   border: none;
-  background-color: #86b817;
+  background-color: #9d9fa1;
+
   border-radius: 8px;
   box-sizing: border-box;
-  color: #fff;
+  color: black;
   min-height: 44px;
   height: 44px;
   line-height: 130%;

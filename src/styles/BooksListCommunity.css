@@ -33,8 +33,18 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .btn {
   color: blue;
   font-size: 17px;
   font-weight: bold;
+}
+.carousel-item {
+  height: 25rem;
+  background: #000;
+  margin-top: 20px;
+}
+
+.carousel-item img {
+  opacity: 0.5;
 }
