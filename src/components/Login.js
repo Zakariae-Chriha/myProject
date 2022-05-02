@@ -32,13 +32,13 @@ function Login(setUser, setUserCookie) {
     const username = e.target.username.value;
     const password = e.target.password.value;
     axios
-      .post("http://localhost:5000/user/register", { username, password })
+      .post("http://localhost:8000/user/register", { username, password })
       .then((res) => {
         setUser(res.data);
         setUserCookie(res.data);
         setError("Registered successfully");
         setTimeout(() => {
-          navigate("/Profile/" + res.data._id);
+          navigate("/Profil" + res.data._id);
         }, 500);
       })
       .catch((err) => {
@@ -116,7 +116,7 @@ function Login(setUser, setUserCookie) {
                       type="submit"
                       className="button"
                       value="Sign In"
-                      onSubmit={handleLoginClick}
+                      onClick={handleLoginClick}
                     />{" "}
                   </div>
                   <div className="hr"></div>
@@ -162,7 +162,7 @@ function Login(setUser, setUserCookie) {
                       type="submit"
                       className="button"
                       value="Sign Up"
-                      onReset={handleRegisterClick}
+                      onClick={handleRegisterClick}
                     />{" "}
                   </div>
                   <div className="hr"></div>

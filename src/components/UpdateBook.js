@@ -1,13 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import "../styles/UpdateBook.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/AddBook.css";
-import { useLocation } from "react-router-dom";
-import BackButton from "../components/BackButton";
+import EditIcon from "@mui/icons-material/Edit";
 
-function AddBook() {
+function UpdateBook() {
   const [title, setTitle] = useState("");
   const [authors, setAuthors] = useState("");
   const [description, setDesription] = useState("");
@@ -19,7 +17,7 @@ function AddBook() {
   const [publisher, setPublisher] = useState("");
   const [userImage, setUserImage] = useState({ file: null });
   const [userImageUrl, setUserImageUrl] = useState("");
-  const location = useLocation();
+
   useEffect(() => {
     getAllBooks();
   }, []);
@@ -82,8 +80,6 @@ function AddBook() {
   return (
     <div className="containerAdd row">
       <div className="addBook1 col">
-        {location.pathname !== "/" ? <BackButton /> : ""}
-
         <div className="formgroup">
           <label className="formgroup-label">Titel :</label>
           <div className="formgroup-input">
@@ -93,6 +89,9 @@ function AddBook() {
               placeholder="title"
               onChange={(e) => setTitle(e.target.value)}
             />
+            <button>
+              <EditIcon />
+            </button>
           </div>
           <br />
           <div className="formgroup">
@@ -107,6 +106,9 @@ function AddBook() {
                 placeholder="authors"
                 onChange={(e) => setAuthors(e.target.value)}
               />
+              <button>
+                <EditIcon />
+              </button>
             </div>
             <br />
           </div>
@@ -150,6 +152,9 @@ function AddBook() {
             placeholder="price"
             onChange={(e) => setPreice(e.target.value)}
           />
+          <button>
+            <EditIcon />
+          </button>
           <span className="price-suffix-label">,00 EUR</span>
           <select
             id="priceType"
@@ -175,6 +180,9 @@ function AddBook() {
               placeholder="description"
               onChange={(e) => setDesription(e.target.value)}
             ></textarea>
+            <button>
+              <EditIcon />
+            </button>
             <small id="pstad-dscrptn-lngth">
               Du hast noch <var>4000</var> Zeichen übrig
             </small>
@@ -191,6 +199,9 @@ function AddBook() {
             placeholder="publisher"
             onChange={(e) => setPublisher(e.target.value)}
           />
+          <button>
+            <EditIcon />
+          </button>
         </div>
         <br />
         <div className="formgroup">
@@ -220,4 +231,4 @@ function AddBook() {
   );
 }
 
-export default AddBook;
+export default UpdateBook;

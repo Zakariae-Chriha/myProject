@@ -11,6 +11,8 @@ import BooksListCommunity from "./components/BooksListCommunity";
 import Bookgoogle from "./components/Bookgoogle";
 import EmailForm from "./components/EmailForm";
 import Profil from "./components/Profil";
+import MyBooks from "./components/MyBooks";
+import UpdateBook from "./components/UpdateBook";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
           <Route path="/Bookgoogle" element={<Bookgoogle />} />
           <Route path="/EmailForm" element={<EmailForm />} />
           <Route path="/AddBook" element={<AddBook />} />
+          <Route path="/Profil" element={<Profil />} />
+          <Route path="/MyBooks" element={<MyBooks />} />
+          <Route path="/UpdateBook" element={<UpdateBook />} />
         </Routes>
       </>
     </div>
