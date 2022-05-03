@@ -7,9 +7,9 @@ import Contact from './components/Contact'
 import Login from './components/Login'
 import AddBook from './components/AddBook'
 import BooksListCommunity from './components/BooksListCommunity'
-import Bookgoogle from './components/bookgoogle'
+import Bookgoogle from './components/Bookgoogle'
 import EmailForm from './components/EmailForm'
-import Profil from './components/Profil'
+import Profile from './components/Profile'
 import MyBooks from './components/MyBooks'
 import UpdateBook from './components/UpdateBook'
 
@@ -25,9 +25,10 @@ function App() {
         <Route path='/bookgoogle' element={<Bookgoogle />} />
         <Route path='/emailform' element={<EmailForm />} />
         <Route path='/add-book' element={<AddBook />} />
-        <Route path='/profil' element={<Profil />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/my-books' element={<MyBooks />} />
         <Route path='/update-book' element={<UpdateBook />} />
+        <Route path='/logout' element={<Login />} />
       </Routes>
     </>
   )
