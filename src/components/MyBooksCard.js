@@ -15,7 +15,7 @@ const MyBooksCard = ({
   const toggle = () => setModal(!modal);
 
   return (
-    <Card style={{ width: "233px" }} className="m-auto ">
+    <Card style={{ width: "233px" }} className="ml-10 ">
       <CardImg
         top
         style={{ width: "100%", height: "233px" }}

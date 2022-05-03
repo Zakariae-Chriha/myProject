@@ -15,7 +15,7 @@ const BooksListCardCommunity = ({
   const toggle = () => setModal(!modal);
 
   return (
-    <Card style={{ width: "233px" }} className="m-auto ">
+    <Card style={{ width: "233px" }}>
       <CardImg
         top
         style={{ width: "100%", height: "233px" }}

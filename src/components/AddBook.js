@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/AddBook.css";
@@ -82,8 +82,6 @@ function AddBook() {
   return (
     <div className="containerAdd row">
       <div className="addBook1 col">
-        {location.pathname !== "/" ? <BackButton /> : ""}
-
         <div className="formgroup">
           <label className="formgroup-label">Titel :</label>
           <div className="formgroup-input">
@@ -213,8 +211,8 @@ function AddBook() {
         </button>
       </div>
 
-      <div className="addBook2 col">
-        <img src="" alt="" />
+      <div className="mt-3">
+        {location.pathname !== "/" ? <BackButton /> : ""}
       </div>
     </div>
   );

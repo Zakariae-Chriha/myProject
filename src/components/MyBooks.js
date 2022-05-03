@@ -63,7 +63,7 @@ function MyBooks() {
   const handleCards = () => {
     if (loading) {
       return (
-        <div className="d-flex justify-content-center mt-3">
+        <div className="d-flex justify-content-center ">
           <Spinner style={{ width: "3rem", height: "3rem" }} />
         </div>
       );
@@ -81,7 +81,7 @@ function MyBooks() {
               preiceType={item.preiceType}
             />
             <div className="row">
-              <div className="col mt-2 d-flex justify-content-center me-10  ">
+              <div className="col mt-2 d-flex justify-content-center  ">
                 <Link to="/UpdateBook">
                   <button onClick={() => updateBooks(item._id)}>
                     Update
@@ -89,7 +89,7 @@ function MyBooks() {
                   </button>
                 </Link>
               </div>
-              <div className="col mt-2 d-flex justify-content-center me-10  ">
+              <div className="col mt-2 d-flex justify-content-center   ">
                 <button onClick={() => deletebooks(item._id)}>
                   Delete <DeleteIcon />
                 </button>
@@ -105,7 +105,12 @@ function MyBooks() {
       );
     }
   };
-  return <div className="w-100 h-100">{handleCards()}</div>;
+  return (
+    <div className="w-100 h-100">
+      {handleCards()}{" "}
+      <div>{location.pathname !== "/" ? <BackButton /> : ""}</div>{" "}
+    </div>
+  );
 }
 
 export default MyBooks;
