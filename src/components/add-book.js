@@ -5,7 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/AddBook.css";
 import { useLocation } from "react-router-dom";
-import BackButton from "../components/BackButton";
+import BackButton from "./BackButton";
 
 function AddBook() {
   const [title, setTitle] = useState("");

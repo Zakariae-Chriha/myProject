@@ -2,22 +2,7 @@
   margin-left: 50px;
   margin-top: 30px;
 }
-button,
-.button,
-.button-secondary,
-.button-inverted,
-.iconbox,
-.button-tertiary,
-.button-ghost,
-.button-square,
-.button-feature,
-.button-link,
-.button-browse-base,
-.button-browse-next,
-.button-browse-previous,
-.button-back2top,
-.button-toggle,
-.is-toggled {
+button {
   display: inline-flex;
   width: fit-content;
   align-items: center;

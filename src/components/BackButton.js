@@ -5,7 +5,7 @@ function BackButton() {
   let navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/profil");
+    navigate("/profile");
   };
   return (
     <div className="backButton">
