@@ -25,7 +25,7 @@ function App() {
         <Route path="/bookgoogle" element={<Bookgoogle />} />
         <Route path="/emailform" element={<EmailForm />} />
         <Route path="/add-book" element={<AddBook />} />
-        <Route path="/profil" element={<Profil />} />
+        <Route path="/profile" element={<Profil />} />
         <Route path="/my-books" element={<MyBooks />} />
         <Route path="/update-book" element={<UpdateBook />} />
         <Route path="/logout" element={<Login />} />

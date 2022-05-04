@@ -1,16 +1,15 @@
 import "../styles/Login.css";
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function Login() {
   const [userInput, setUserInput] = useState({ name: "", password: "" });
-  const { login, loggedIn, signup } = useContext(AuthContext);
+  const { login, loggedIn } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
-    signup(userInput);
+    login(userInput);
   };
 
   if (loggedIn) return <Navigate to="/profile" />;
@@ -91,7 +90,7 @@ function Login() {
                   </div>
                   <div className="hr"></div>
                   <div className="foot">
-                    <a href="#">Forgot Password?</a>
+                    <a href="/">Forgot Password?</a>
                   </div>
                 </div>
                 <div className="sign-up-form">

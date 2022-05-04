@@ -12,7 +12,7 @@ function AuthState({ children }) {
       const res = await axios.post("http://localhost:8000/user/login", user);
       localStorage.setItem("token", res.data.token);
 
-      const userInfo = await axios.get("http://localhost:5000/users", {
+      const userInfo = await axios.get("http://localhost:8000/users", {
         headers: {
           Authorization: `${res.data.token}`,
         },
@@ -26,7 +26,7 @@ function AuthState({ children }) {
   };
   const signup = async (user) => {
     try {
-      const res = await axios.post("http://localhost:5000/user/register", user);
+      const res = await axios.post("http://localhost:8000/user/register", user);
       localStorage.setItem("token", res.data.token);
       const userInfo = await axios.get("http://localhost:8000/users", {
         headers: {
