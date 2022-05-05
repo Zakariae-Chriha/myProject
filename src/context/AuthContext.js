@@ -1,86 +1,86 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState, useEffect } from 'react'
+import axios from 'axios'
 
-export const AuthContext = createContext();
+export const AuthContext = createContext()
 
 function AuthState({ children }) {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState({})
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token')
 
     const verifySession = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/user/verify-session",
+          'http://localhost:8000/user/verify-session',
           {
             headers: {
               Authorization: `${token}`,
             },
           }
-        );
+        )
         if (res.data.success) {
-          const userInfo = await axios.get("http://localhost:8000/user/me", {
+          const userInfo = await axios.get('http://localhost:8000/user/me', {
             headers: {
               Authorization: `${token}`,
             },
-          });
-          setLoggedIn(true);
-          setUser(userInfo.data);
+          })
+          setLoggedIn(true)
+          setUser(userInfo.data)
         }
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
-    };
+    }
 
-    token && verifySession();
-  }, []);
+    token && verifySession()
+  }, [])
 
   const login = async (user) => {
     try {
-      const res = await axios.post("http://localhost:8000/user/login", user);
-      localStorage.setItem("token", res.data.token);
+      const res = await axios.post('http://localhost:8000/user/login', user)
+      localStorage.setItem('token', res.data.token)
 
-      const userInfo = await axios.get("http://localhost:8000/user/me", {
+      const userInfo = await axios.get('http://localhost:8000/user/me', {
         headers: {
           Authorization: `${res.data.token}`,
         },
-      });
+      })
 
-      setLoggedIn(true);
-      setUser(userInfo.data);
+      setLoggedIn(true)
+      setUser(userInfo.data)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
   const signup = async (user) => {
     try {
-      const res = await axios.post("http://localhost:8000/user/register", user);
-      localStorage.setItem("token", res.data.token);
-      const userInfo = await axios.get("http://localhost:8000/user/me", {
+      const res = await axios.post('http://localhost:8000/user/register', user)
+      localStorage.setItem('token', res.data.token)
+      const userInfo = await axios.get('http://localhost:8000/user/me', {
         headers: {
           Authorization: `${res.data.token}`,
         },
-      });
-      localStorage.setItem("token", res.data.token);
-      setLoggedIn(true);
-      setUser(userInfo.data);
+      })
+      localStorage.setItem('token', res.data.token)
+      setLoggedIn(true)
+      setUser(userInfo.data)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
-
+  }
   const logout = () => {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    setUser({});
-  };
+    localStorage.removeItem('token')
+    setLoggedIn(false)
+    setUser({})
+  }
 
   return (
     <AuthContext.Provider value={{ logout, loggedIn, user, signup, login }}>
       {children}
     </AuthContext.Provider>
-  );
+  )
 }
 
-export default AuthState;
+export default AuthState
