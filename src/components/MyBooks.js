@@ -1,5 +1,6 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "../styles/BooksListCommunity.css";
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Spinner } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -23,10 +24,25 @@ function MyBooks() {
   const [preice, setPreice] = useState("");
   const [preiceType, setPreiceType] = useState("");
   const [userImageUrl, setUserImageUrl] = useState("");
+  const params = useParams();
   useEffect(() => {
     getAllBooks();
+    getBookdetails();
   }, []);
-
+  const getBookdetails = async () => {
+    console.log("params", params);
+    let result = await fetch(`http://localhost:8000/update/${params.id}`);
+    result = await result.json();
+    console.log(result);
+    setTitle(result.title);
+    setAuthors(result.authors);
+    setUserImageUrl(result.userImageUrl);
+    setCategory(result.category);
+    setDesription(result.description);
+    setPreice(result.preice);
+    setPreiceType(result.preiceType);
+    setPublisher(result.publisher);
+  };
   console.log("loading: ", loading);
   console.log("cards: ", cards);
 
@@ -82,7 +98,7 @@ function MyBooks() {
             />
             <div className="row">
               <div className="col mt-2 d-flex justify-content-center  ">
-                <Link to="/UpdateBook">
+                <Link to="/Update-book">
                   <button onClick={() => updateBooks(item._id)}>
                     Update
                     <EditIcon />

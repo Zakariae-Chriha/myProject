@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -6,13 +6,42 @@ export const AuthContext = createContext();
 function AuthState({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    const verifySession = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8000/user/verify-session",
+          {
+            headers: {
+              Authorization: `${token}`,
+            },
+          }
+        );
+        if (res.data.success) {
+          const userInfo = await axios.get("http://localhost:8000/user/me", {
+            headers: {
+              Authorization: `${token}`,
+            },
+          });
+          setLoggedIn(true);
+          setUser(userInfo.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    token && verifySession();
+  }, []);
 
   const login = async (user) => {
     try {
       const res = await axios.post("http://localhost:8000/user/login", user);
       localStorage.setItem("token", res.data.token);
 
-      const userInfo = await axios.get("http://localhost:8000/users", {
+      const userInfo = await axios.get("http://localhost:8000/user/me", {
         headers: {
           Authorization: `${res.data.token}`,
         },
@@ -28,7 +57,7 @@ function AuthState({ children }) {
     try {
       const res = await axios.post("http://localhost:8000/user/register", user);
       localStorage.setItem("token", res.data.token);
-      const userInfo = await axios.get("http://localhost:8000/users", {
+      const userInfo = await axios.get("http://localhost:8000/user/me", {
         headers: {
           Authorization: `${res.data.token}`,
         },

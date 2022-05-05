@@ -12,24 +12,29 @@ import EmailForm from "./components/EmailForm";
 import Profil from "./components/Profil";
 import MyBooks from "./components/MyBooks";
 import UpdateBook from "./components/UpdateBook";
-
+import AuthState from "./context/AuthContext";
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/books-list-community" element={<BooksListCommunity />} />
-        <Route path="/bookgoogle" element={<Bookgoogle />} />
-        <Route path="/emailform" element={<EmailForm />} />
-        <Route path="/add-book" element={<AddBook />} />
-        <Route path="/profile" element={<Profil />} />
-        <Route path="/my-books" element={<MyBooks />} />
-        <Route path="/update-book" element={<UpdateBook />} />
-        <Route path="/logout" element={<Login />} />
-      </Routes>
+      <AuthState>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/books-list-community"
+            element={<BooksListCommunity />}
+          />
+          <Route path="/bookgoogle" element={<Bookgoogle />} />
+          <Route path="/emailform" element={<EmailForm />} />
+          <Route path="/add-book" element={<AddBook />} />
+          <Route path="/profile" element={<Profil />} />
+          <Route path="/my-books" element={<MyBooks />} />
+          <Route path="/update-book" element={<UpdateBook />} />
+          <Route path="/logout" element={<Login />} />
+        </Routes>
+      </AuthState>
     </>
   );
 }

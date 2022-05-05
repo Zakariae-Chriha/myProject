@@ -19,14 +19,7 @@ function Login() {
         <div className="card">
           <div className="login-box">
             <div className="login-snip">
-              <input
-                id="tab-1"
-                type="radio"
-                name="tab"
-                className="sign-in"
-                checked
-                readOnly
-              />
+              <input id="tab-1" type="radio" name="tab" className="sign-in" />
               <label className="tab">Login</label>
               <input id="tab-2" type="radio" name="tab" className="sign-up" />
               <label htmlFor="tab-2" className="tab">

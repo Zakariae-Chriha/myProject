@@ -89,9 +89,6 @@ function UpdateBook() {
               placeholder="title"
               onChange={(e) => setTitle(e.target.value)}
             />
-            <button>
-              <EditIcon />
-            </button>
           </div>
           <br />
           <div className="formgroup">
@@ -106,9 +103,6 @@ function UpdateBook() {
                 placeholder="authors"
                 onChange={(e) => setAuthors(e.target.value)}
               />
-              <button>
-                <EditIcon />
-              </button>
             </div>
             <br />
           </div>
@@ -152,9 +146,7 @@ function UpdateBook() {
             placeholder="price"
             onChange={(e) => setPreice(e.target.value)}
           />
-          <button>
-            <EditIcon />
-          </button>
+
           <span className="price-suffix-label">,00 EUR</span>
           <select
             id="priceType"
@@ -180,9 +172,7 @@ function UpdateBook() {
               placeholder="description"
               onChange={(e) => setDesription(e.target.value)}
             ></textarea>
-            <button>
-              <EditIcon />
-            </button>
+
             <small id="pstad-dscrptn-lngth">
               Du hast noch <var>4000</var> Zeichen übrig
             </small>
@@ -199,9 +189,6 @@ function UpdateBook() {
             placeholder="publisher"
             onChange={(e) => setPublisher(e.target.value)}
           />
-          <button>
-            <EditIcon />
-          </button>
         </div>
         <br />
         <div className="formgroup">
@@ -218,9 +205,11 @@ function UpdateBook() {
           id="pstad-submit"
           className="button"
           type="submit"
-          onClick={handelClick}
+          onClick={updateBooks}
         >
-          <span>Anzeige aufgeben</span>
+          <span>
+            send Update <EditIcon />
+          </span>
         </button>
       </div>
 
