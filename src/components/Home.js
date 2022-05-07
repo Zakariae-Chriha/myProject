@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="row">
       <div className="side-left  col sm-6">
-        <h5 className=" m-5">Welcome by :</h5>
+        <h5 className=" m-5">Welcome by </h5>
         <h3
           className="display-2 text-center text-white mb-3 mt-5"
           style={{ zIndex: 2 }}
@@ -19,8 +19,11 @@ function Home() {
             <button type="button">Read Books For Free</button>
           </Link>
 
-          <Link to="/books-list-community">
+          <Link to="/add-book">
             <button>Give-away OR Sale</button>
+          </Link>
+          <Link to="/books-list-community">
+            <button>check out available books</button>
           </Link>
         </div>
 

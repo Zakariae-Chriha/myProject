@@ -1,25 +1,25 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Logout() {
-  const { logout, loggedIn, user } = useContext(AuthContext)
+  const { logout, loggedIn, user } = useContext(AuthContext);
   return (
     <div>
       {loggedIn ? (
         <>
-          {user.name}
+          {user.username}
           <button onClick={logout}>Logout</button>
         </>
       ) : (
         <>
           <button>
-            <Link to='/home'>Login</Link>
+            <Link to="/">Login</Link>
           </button>
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default Logout
+export default Logout;

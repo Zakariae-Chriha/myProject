@@ -1,13 +1,14 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "../styles/BooksListCommunity.css";
 import { Carousel, Table } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Spinner } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import slide5 from "../assets/library-5641389_1920.jpg";
 import slide2 from "../assets/college-student-4369850_1920.jpg";
 import slide6 from "../assets/books-5433432_1920.jpg";
+import { AuthContext } from "../context/AuthContext";
 
 import BooksListCardCommunity from "../components/BooksListCardCommunity";
 
@@ -64,6 +65,23 @@ function BooksListCommunity() {
             </button>
           ))}
         </div>
+        {categories.length === 0 && loading === false && (
+          <>
+            <div className="NoResults">
+              Sorry{" "}
+              <span role="img" aria-label="sad">
+                <p>&#128577;</p>
+              </span>
+              , we couldn't find any results for: <br />
+            </div>
+            <div className="NoResultsP">
+              <ul className="NoResultsList">
+                <li>Please double-check the spelling.</li>
+                <li>Try other search terms.</li>
+              </ul>
+            </div>
+          </>
+        )}
         <div className="side-right col ">
           <Carousel variant="dark">
             <Carousel.Item>
@@ -128,6 +146,7 @@ function BooksListCommunity() {
               description={item.description}
               preiceType={item.preiceType}
             />
+
             <div className="col mt-2 d-flex justify-content-center me-10  ">
               <Link to="/EmailForm">
                 <button>Send Email</button>
@@ -143,6 +162,11 @@ function BooksListCommunity() {
       );
     }
   };
+  const navigate = useNavigate();
+  const { loggedIn } = useContext(AuthContext);
+
+  if (!loggedIn)
+    navigate("/login", { state: { nextPage: "/books-list-community" } });
   return (
     <div className="w-100 h-100">
       {mainHeader()}

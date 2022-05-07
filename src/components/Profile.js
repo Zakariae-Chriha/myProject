@@ -1,44 +1,56 @@
-import React, { useContext } from 'react'
-
-import { AuthContext } from '../context/AuthContext'
-import '../styles/Profil.css'
-import { Link } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
-
+import React, { useContext } from "react";
+import slide7 from "../assets/user.png";
+import { AuthContext } from "../context/AuthContext";
+import "../styles/Profil.css";
+import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import HomeIcon from "@mui/icons-material/Home";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import LogoutIcon from "@mui/icons-material/Logout";
 function Profile() {
-  const { logout, loggedIn } = useContext(AuthContext)
+  const { logout, loggedIn } = useContext(AuthContext);
 
-  console.log(loggedIn)
+  console.log(loggedIn);
   const handleLogout = () => {
-    logout()
-  }
+    logout();
+  };
 
-  if (!loggedIn) return <Navigate to='/login' />
+  if (!loggedIn) return <Navigate to="/login" />;
   return (
-    <div className='Profil '>
-      <details>
-        <div className='Profil'>
-          <img
-            src='http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g'
-            alt='userimg'
-          />
-        </div>
-        <summary></summary>
-        <nav className='menu'>
-          <li>
-            <Link to='/add-book'>Add Book</Link>
+    <div className="Profil row ">
+      <>
+        <nav className="menu col d-flex justify-content-lg-around mt-4 ">
+          <li onClick={handleLogout}>
+            <LogoutIcon />
+            Logout
           </li>
           <li>
-            <Link to='/my-books'>My Books</Link>
+            <Link to="/contact">
+              <ContactMailIcon />
+              Contact
+            </Link>
           </li>
           <li>
-            <Link to='/contact'>Contact</Link>
+            <Link to="/my-books">
+              <HomeIcon />
+              My Books
+            </Link>
           </li>
-          <li onClick={handleLogout}>Logout</li>
+
+          <li>
+            <Link to="/add-book">
+              <AddBoxIcon />
+              Add Book
+            </Link>
+          </li>
         </nav>
-      </details>
+      </>
+      <div className=" img col d-flex justify-content-end m-2 ">
+        <img src={slide7} alt="userimg" />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

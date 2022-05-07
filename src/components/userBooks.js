@@ -12,7 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
 
-function MyBooks() {
+function UserBooks() {
   //stats
   const [title, setTitle] = useState("");
   const [authors, setAuthors] = useState("");
@@ -103,16 +103,17 @@ function MyBooks() {
             <div className="row">
               <div className="col mt-2 d-flex justify-content-center  ">
                 <Link to={`/update-book/${item._id}`}>
-                  <button>
-                    Update
-                    <EditIcon />
-                  </button>{" "}
-                  {/*onClick={() => updateBooks(item._id)}> */}
+                  {/* <button onClick={() => updateBooks(item._id)}> */}
+                  Update
+                  <EditIcon />
                   {/* </button> */}
                 </Link>
               </div>
               <div className="col mt-2 d-flex justify-content-center   ">
-                <button onClick={() => deletebooks(item._id)}>
+                <button
+                  onClick={() => deletebooks(item._id)}
+                  style={{ color: "red" }}
+                >
                   Delete <DeleteIcon />
                 </button>
               </div>
@@ -135,4 +136,4 @@ function MyBooks() {
   );
 }
 
-export default MyBooks;
+export default UserBooks;
