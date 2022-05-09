@@ -1,65 +1,74 @@
-import '../styles/EmailForm.css'
-
-import { useState } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import axios from 'axios'
+import "../styles/Contact.css";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function EmailForm() {
-  const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const form = useRef();
 
-  const submitHandler = async (e) => {
-    e.preventDefault()
-    if (!email || !subject || !message) {
-      return toast.error('Please fill email, subject and message')
-    }
-    try {
-      setLoading(true)
-      const { data } = await axios.post(`/api/email`, {
-        email,
-        subject,
-        message,
-      })
-      setLoading(false)
-      toast.success(data.message)
-    } catch (err) {
-      setLoading(false)
-      toast.error(
-        err.response && err.response.data.message
-          ? err.response.data.message
-          : err.message
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_wf9xhsw",
+        "template_7ivhia6",
+        form.current,
+        "3Dafb64jHMManKUW3"
       )
-    }
-  }
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("msg send");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
   return (
-    <div className='container'>
-      <ToastContainer position='bottom-center' limit={1} />
-      <div className='contact-parent'>
-        <div className='contact-child child1'></div>
-        <div className='contact-child child2'>
-          <form onSubmit={submitHandler}>
-            <div className='inside-contact'>
-              <h2>Send Email</h2>
+    <div className="container">
+      <div className="contact-parent">
+        <div className="contact-child child1">
+          <p>
+            <i className="fas fa-map-marker-alt"></i> Address <br />
+            <span>
+              {" "}
+              Hermanplatz 16A
+              <br />
+              Berlin, Deutschland
+            </span>
+          </p>
+          <p>
+            <i className="fas fa-phone-alt"></i> Let's Talk <br />
+            <span> 0787878787</span>
+          </p>
+          <p>
+            <i className=" far fa-envelope"></i> General Support <br />
+            <span>chrihazakaria@gmail.com</span>
+          </p>
+        </div>
+        <div className="contact-child child2">
+          <form ref={form} onSubmit={sendEmail}>
+            <div className="inside-contact">
+              <h2>Contact Us</h2>
               <h3></h3>
-              <p> Email*</p>
+              <p>Name *</p>
               <input
-                id='txt_email'
-                Required='required'
-                onChange={(e) => setEmail(e.target.value)}
-                type='email'
+                id="txt_name"
+                type="text"
+                Required="required"
+                name="user_name"
               />
               <br />
               <br />
               <br />
 
-              <p>subject *</p>
+              <p>Email *</p>
               <input
-                id='subject'
-                type='text'
-                onChange={(e) => setSubject(e.target.value)}
+                id="txt_email"
+                type="text"
+                Required="required"
+                name="user_email"
               />
               <br />
               <br />
@@ -67,20 +76,23 @@ function EmailForm() {
 
               <p>Message *</p>
               <textarea
-                id='message'
-                onChange={(e) => setMessage(e.target.value)}
-                Required='required'></textarea>
+                name="message"
+                id="txt_message"
+                rows="4"
+                cols="20"
+                Required="required"
+              ></textarea>
               <br />
               <br />
               <br />
 
-              <input type='submit' id='btn_send' value='SEND' />
+              <input type="submit" id="btn_send" value="SEND" />
             </div>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default EmailForm
+export default EmailForm;
