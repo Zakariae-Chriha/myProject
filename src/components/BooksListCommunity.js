@@ -1,13 +1,13 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "../styles/BooksListCommunity.css";
-import { Carousel, Table } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from "react";
 import { Spinner } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import slide5 from "../assets/library-5641389_1920.jpg";
-import slide2 from "../assets/college-student-4369850_1920.jpg";
-import slide6 from "../assets/books-5433432_1920.jpg";
+import slide5 from "../assets/woman-3435842_1920.jpg";
+import slide2 from "../assets/to-learn-3653430_1920.jpg";
+import slide6 from "../assets/college-student-4369850_1920.jpg";
 import { AuthContext } from "../context/AuthContext";
 
 import BooksListCardCommunity from "../components/BooksListCardCommunity";
@@ -17,7 +17,17 @@ function BooksListCommunity() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-
+  const categories = [
+    "Poems",
+    "Western",
+    "History",
+    "Non-Fiction",
+    "Fairy-Tale",
+    "Fiction",
+    "Novel",
+    "Romance",
+    "Myth",
+  ];
   console.log("selectedCategory", selectedCategory);
   // console.log('loading: ', loading)
   console.log("cards: ", cards);
@@ -39,18 +49,6 @@ function BooksListCommunity() {
   };
   // Main Show Case
   const mainHeader = () => {
-    const categories = [
-      "Poems",
-      "Western",
-      "History",
-      "Non-Fiction",
-      "Fairy-Tale",
-      "Fiction",
-      "Novel",
-      "Romance",
-      "Myth",
-    ];
-
     return (
       <div className="row">
         <div className="side-left col-2 d-flex justify-content-center align-items-center flex-column ">
@@ -65,35 +63,11 @@ function BooksListCommunity() {
             </button>
           ))}
         </div>
-        {categories.length === 0 && loading === false && (
-          <>
-            <div className="NoResults">
-              Sorry{" "}
-              <span role="img" aria-label="sad">
-                <p>&#128577;</p>
-              </span>
-              , we couldn't find any results for: <br />
-            </div>
-            <div className="NoResultsP">
-              <ul className="NoResultsList">
-                <li>Please double-check the spelling.</li>
-                <li>Try other search terms.</li>
-              </ul>
-            </div>
-          </>
-        )}
+
         <div className="side-right col ">
           <Carousel variant="dark">
             <Carousel.Item>
               <img className="d-block w-100" src={slide5} alt="First slide" />
-              <Carousel.Caption>
-                <h1
-                  className="display-2 text-center text-white mb-3"
-                  style={{ zIndex: 2 }}
-                >
-                  Read Books For Free
-                </h1>
-              </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img
@@ -101,25 +75,9 @@ function BooksListCommunity() {
                 src={slide2}
                 alt="Second slide"
               />
-              <Carousel.Caption>
-                <h1
-                  className="display-2 text-center text-white mb-3"
-                  style={{ zIndex: 2 }}
-                >
-                  Read Books For Free
-                </h1>
-              </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img className="d-block w-100" src={slide6} alt="Third slide" />
-              <Carousel.Caption>
-                <h1
-                  className="display-2 text-center text-white mb-3"
-                  style={{ zIndex: 2 }}
-                >
-                  Gave-away Or Sale
-                </h1>
-              </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
         </div>
@@ -171,6 +129,25 @@ function BooksListCommunity() {
     <div className="w-100 h-100">
       {mainHeader()}
       {handleCards()}
+      {categories.length === 0 && loading === false && (
+        <>
+          <div className="NoResults">
+            Sorry{" "}
+            <span role="img" aria-label="sad">
+              <p>&#128577;</p>
+            </span>
+            , we couldn't find any results for: {categories}
+            <br />
+            {categories}
+          </div>
+          <div className="NoResultsP">
+            <ul className="NoResultsList">
+              <li>Please double-check the spelling.</li>
+              <li>Try other categories.</li>
+            </ul>
+          </div>
+        </>
+      )}
     </div>
   );
 }

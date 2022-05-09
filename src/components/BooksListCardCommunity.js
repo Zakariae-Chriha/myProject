@@ -47,6 +47,7 @@ const BooksListCardCommunity = ({
               <p>Authors : {authors}</p>
               <p>Preice : {preice}</p>
               <p>Preicetyp : {preiceType}</p>
+              <p>publisher : {publisher}</p>
             </div>
           </div>
           <div className="mt-3">{description}</div>

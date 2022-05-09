@@ -220,8 +220,7 @@ function AddBook() {
           <span>Anzeige aufgeben</span>
         </button>
       </div>
-
-      <div className="mt-3">
+      <div className="add mt-2">
         {location.pathname !== "/" ? <BackButton /> : ""}
       </div>
     </div>

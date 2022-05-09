@@ -44,6 +44,7 @@ const MyBooksCard = ({
           <div className="d-flex justify-content-between ml-3">
             <img src={userImage} alt={title} style={{ height: "150px" }} />
             <div>
+              <p>publisher : {publisher}</p>
               <p>Authors : {authors}</p>
               <p>Preice : {preice}</p>
               <p>Preicetyp : {preiceType}</p>

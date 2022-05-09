@@ -30,10 +30,23 @@ function UpdateBook() {
     getOneBook();
   }, []);
 
-  const getOneBook = () => {
-    axios.get(`http://localhost:8000/read/${params.id}`).then((response) => {
-      setBookslist(response.data);
-    });
+  // const getOneBook = () => {
+  //  axios.get(`http://localhost:8000/read/${params.id}`).then((response) => {
+  //  setBookslist(response.data);
+  // });
+  // };
+  const getOneBook = async () => {
+    let result = await fetch(`http://localhost:8000/read/${params.id}`);
+    result = await result.json();
+    console.log(result);
+    setTitle(result.title);
+    setAuthors(result.authors);
+    setCategory(result.category);
+    setDesription(result.description);
+    setPreice(result.preice);
+    setPreiceType(result.preiceType);
+    setUserImageUrl(result.userImageUrl);
+    setPublisher(result.publisher);
   };
 
   // const getAllBooks = () => {
@@ -50,6 +63,9 @@ function UpdateBook() {
       authors: authors,
       description: description,
       preice: preice,
+      publisher: publisher,
+      preiceType: preiceType,
+      category: category,
     });
 
     navigate("/my-books");
@@ -102,7 +118,7 @@ function UpdateBook() {
               className="formcontrol"
               maxLength="65"
               placeholder="title"
-              value={bookslist.title}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -116,7 +132,7 @@ function UpdateBook() {
                 className="formcontrol"
                 type="text"
                 maxLength="65"
-                value={bookslist.authors}
+                value={authors}
                 placeholder="authors"
                 onChange={(e) => setAuthors(e.target.value)}
               />
@@ -159,7 +175,7 @@ function UpdateBook() {
             name="priceAmount"
             className=" formcontrol pricefield"
             type="text"
-            value={bookslist.preice}
+            value={preice}
             maxLength="8"
             placeholder="price"
             onChange={(e) => setPreice(e.target.value)}
@@ -169,7 +185,7 @@ function UpdateBook() {
           <select
             id="priceType"
             name="priceType"
-            value={bookslist.preiceType}
+            value={preiceType}
             onChange={(e) => setPreiceType(e.target.value)}
           >
             <option value="FIXED">FIXED</option>
@@ -186,7 +202,7 @@ function UpdateBook() {
               name="description"
               className="j-hidden-sbmt"
               rows="5"
-              value={bookslist.description}
+              value={description}
               cols="30"
               placeholder="description"
               onChange={(e) => setDesription(e.target.value)}
@@ -204,7 +220,7 @@ function UpdateBook() {
             name="au"
             className="formcontrol"
             type="text"
-            value={bookslist.publisher}
+            value={publisher}
             maxLength="65"
             placeholder="publisher"
             onChange={(e) => setPublisher(e.target.value)}
@@ -228,7 +244,7 @@ function UpdateBook() {
           onClick={updateBooks}
         >
           <span>
-            send Update <EditIcon />
+            Update <EditIcon />
           </span>
         </button>
       </div>

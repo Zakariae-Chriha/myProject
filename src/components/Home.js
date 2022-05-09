@@ -14,7 +14,7 @@ function Home() {
           Community Books
         </h3>
 
-        <div className="group1  m-5">
+        <div className="group1 col-ms m-5">
           <Link to="/bookgoogle">
             <button type="button">Read Books For Free</button>
           </Link>
@@ -321,12 +321,11 @@ function Home() {
 
           <div className=" col  text-center  mt-5">
             <p>
-              A Wikipedia Book is an organized collection of Wikipedia articles
-              that can be sent to a third party service for rendering
-              electronically in PDF format, or ordering as a printed book. The
-              book is compiled afresh each time it is retrieved by the service,
-              so that a new upload will always reflect the latest versions of
-              the articles.
+              A Book is an organized collection of Wikipedia articles that can
+              be sent to a third party service for rendering electronically in
+              PDF format, or ordering as a printed book. The book is compiled
+              afresh each time it is retrieved by the service, so that a new
+              upload will always reflect the latest versions of the articles.
             </p>
           </div>
         </div>
