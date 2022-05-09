@@ -6,10 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import EditIcon from '@mui/icons-material/Edit'
 import BackButton from './BackButton'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import AuthContext from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext'
 
 function UpdateBook() {
-  const { user } = useContext(AuthContext)
   const [title, setTitle] = useState('')
   const [authors, setAuthors] = useState('')
   const [description, setDesription] = useState('')
@@ -23,7 +22,7 @@ function UpdateBook() {
   const [userImageUrl, setUserImageUrl] = useState('')
   const location = useLocation()
   let navigate = useNavigate()
-
+  const { user } = useContext(AuthContext)
   const params = useParams()
   console.log('params aus update book', params.id)
 
@@ -57,7 +56,7 @@ function UpdateBook() {
   //     .then((response) => setBookslist(response.data))
   //     .catch((Error) => console.log(Error))
   // }
-
+  console.log('user', user)
   const updateBooks = (id) => {
     axios.put(`http://localhost:8000/update/${params.id}`, {
       userImage: userImageUrl,
