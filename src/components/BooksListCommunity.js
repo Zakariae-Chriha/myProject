@@ -91,27 +91,29 @@ function BooksListCommunity() {
         </div>
       )
     } else {
-      const items = cards.map((item) => {
-        return (
-          <div className='col-lg-4 mb-3' key={item._id}>
-            <BooksListCardCommunity
-              userImage={item.userImage}
-              title={item.title}
-              publisher={item.publisher}
-              preice={item.preice}
-              authors={item.authors}
-              description={item.description}
-              preiceType={item.preiceType}
-            />
+      const items =
+        cards.length > 0 &&
+        cards.map((item) => {
+          return (
+            <div className='col-lg-4 mb-3' key={item._id}>
+              <BooksListCardCommunity
+                userImage={item.userImage}
+                title={item.title}
+                publisher={item.publisher}
+                preice={item.preice}
+                authors={item.authors}
+                description={item.description}
+                preiceType={item.preiceType}
+              />
 
-            <div className='col mt-2 d-flex justify-content-center me-10  '>
-              <Link to='/EmailForm'>
-                <button>Send Email</button>
-              </Link>
+              <div className='col mt-2 d-flex justify-content-center me-10  '>
+                <Link to='/EmailForm'>
+                  <button>Send Email</button>
+                </Link>
+              </div>
             </div>
-          </div>
-        )
-      })
+          )
+        })
       return (
         <div className='container my-5'>
           <div className='row'>{items}</div>
