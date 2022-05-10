@@ -50,7 +50,7 @@ function EmailForm() {
         <div className="contact-child child2">
           <form ref={form} onSubmit={sendEmail}>
             <div className="inside-contact">
-              <h2>Contact Us</h2>
+              <h2>Send Email</h2>
               <h3></h3>
               <p>Name *</p>
               <input
