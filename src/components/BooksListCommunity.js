@@ -28,9 +28,6 @@ function BooksListCommunity() {
     "Romance",
     "Myth",
   ];
-  console.log("selectedCategory", selectedCategory);
-  // console.log('loading: ', loading)
-  console.log("cards: ", cards);
 
   useEffect(() => {
     getBooks();

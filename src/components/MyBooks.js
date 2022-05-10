@@ -35,10 +35,8 @@ function MyBooks() {
   }, [])
 
   const getBookdetails = async () => {
-    console.log('params', params)
-    let result = await fetch(`http://localhost:8000/update/${params.id}`)
+    let result = await fetch(`http://localhost:8000/read/${params.id}`)
     result = await result.json()
-    console.log(result)
     setTitle(result.title)
     setAuthors(result.authors)
     setUserImageUrl(result.userImageUrl)
@@ -49,7 +47,6 @@ function MyBooks() {
     setPublisher(result.publisher)
   }
 
-  console.log('userid', user)
   // fetch
   const getAllBooks = () => {
     setLoading(true)
@@ -90,9 +87,8 @@ function MyBooks() {
       )
     } else {
       const items = cards.map((item, i) => {
-        console.log(item)
         return (
-          <div className='col-lg-4 mb-3' key={item.id}>
+          <div className='col-lg-4 mb-3' key={item._id}>
             <MyBooksCard
               userImage={item.userImage}
               title={item.title}

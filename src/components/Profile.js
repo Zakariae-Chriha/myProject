@@ -11,7 +11,6 @@ import LogoutIcon from '@mui/icons-material/Logout'
 function Profile() {
   const { logout, loggedIn } = useContext(AuthContext)
 
-  console.log(loggedIn)
   const handleLogout = () => {
     logout()
   }
