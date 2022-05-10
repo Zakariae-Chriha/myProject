@@ -1,98 +1,75 @@
-import "../styles/Contact.css";
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useState } from "react";
+import axios from "axios";
 
-function EmailForm() {
-  const form = useRef();
+const EmailForm = () => {
+  const [msg, setMsg] = useState("");
+  const [user, setUser] = useState({
+    to: "",
+    subject: "",
+    description: "",
+  });
 
-  const sendEmail = (e) => {
+  const { to, subject, description } = user;
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_wf9xhsw",
-        "template_7ivhia6",
-        form.current,
-        "3Dafb64jHMManKUW3"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log("msg send");
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    await axios
+      .post("http://localhost:8000/send_mail/", user)
+      .then((response) => setMsg(response.data.respMesg));
   };
   return (
     <div className="container">
-      <div className="contact-parent">
-        <div className="contact-child child1">
-          <p>
-            <i className="fas fa-map-marker-alt"></i> Address <br />
-            <span>
-              {" "}
-              Hermanplatz 16A
-              <br />
-              Berlin, Deutschland
-            </span>
+      <div class="row">
+        <div className="col-sm-4 mx-auto shadow p-5 mt-5">
+          <h4 className="text-center mb-2">Send E Mail </h4>
+          <p class="mb-3 mt-2" style={{ color: "green", marginLeft: "57px" }}>
+            <b>{msg}</b>
           </p>
-          <p>
-            <i className="fas fa-phone-alt"></i> Let's Talk <br />
-            <span> 0787878787</span>
-          </p>
-          <p>
-            <i className=" far fa-envelope"></i> General Support <br />
-            <span>chrihazakaria@gmail.com</span>
-          </p>
-        </div>
-        <div className="contact-child child2">
-          <form ref={form} onSubmit={sendEmail}>
-            <div className="inside-contact">
-              <h2>Send Email</h2>
-              <h3></h3>
-              <p>Name *</p>
-              <input
-                id="txt_name"
-                type="text"
-                Required="required"
-                name="user_name"
-              />
-              <br />
-              <br />
-              <br />
+          <div className="form-group mb-3">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="To"
+              name="to"
+              onChange={onInputChange}
+              value={user.to}
+            />
+          </div>
+          <div className="form-group  mb-4 ">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="Subject"
+              name="subject"
+              onChange={onInputChange}
+              value={subject}
+            />
+          </div>
+          <div className="form-group  mb-4">
+            <textarea
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="Description"
+              name="description"
+              onChange={onInputChange}
+              value={description}
+            />
+          </div>
 
-              <p>Email *</p>
-              <input
-                id="txt_email"
-                type="text"
-                Required="required"
-                name="user_email"
-              />
-              <br />
-              <br />
-              <br />
-
-              <p>Message *</p>
-              <textarea
-                name="message"
-                id="txt_message"
-                rows="4"
-                cols="20"
-                Required="required"
-              ></textarea>
-              <br />
-              <br />
-              <br />
-
-              <input type="submit" id="btn_send" value="SEND" />
-            </div>
-          </form>
+          <button
+            onClick={onSubmit}
+            className="btn btn-primary btn-block "
+            style={{ marginLeft: "100px" }}
+          >
+            Send Mail
+          </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default EmailForm;
