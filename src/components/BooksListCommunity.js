@@ -103,12 +103,6 @@ function BooksListCommunity() {
                 description={item.description}
                 preiceType={item.preiceType}
               />
-
-              <div className="col mt-2 d-flex justify-content-center me-10  ">
-                <Link to="/EmailForm">
-                  <button>Send Email</button>
-                </Link>
-              </div>
             </div>
           );
         });
