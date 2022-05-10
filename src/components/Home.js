@@ -59,7 +59,7 @@ function Home() {
                     height="3"
                     fill="#F3F3F3"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="laptop-screen"
@@ -69,7 +69,7 @@ function Home() {
                     height="11"
                     fill="#5A524E"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="line-1"
@@ -113,13 +113,13 @@ function Home() {
                     height="7"
                     fill="#CCC4C4"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <path
                     id="Ellipse 416"
                     d="M11 28C12.1046 28 13 27.1046 13 26C13 24.8954 12.1046 24 11 24"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 996"
@@ -140,7 +140,7 @@ function Home() {
                     transform="rotate(90 58 27)"
                     fill="#B16B4F"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 985"
@@ -151,7 +151,7 @@ function Home() {
                     transform="rotate(90 56 23)"
                     fill="#797270"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 986"
@@ -162,7 +162,7 @@ function Home() {
                     transform="rotate(90 60 19)"
                     fill="#F78764"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 993"
@@ -198,7 +198,7 @@ function Home() {
                     height="5"
                     fill="#797270"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 987"
@@ -208,7 +208,7 @@ function Home() {
                     height="6"
                     fill="#797270"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 975"
@@ -218,7 +218,7 @@ function Home() {
                     height="24"
                     fill="#797270"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 974"
@@ -228,7 +228,7 @@ function Home() {
                     height="24"
                     fill="#797270"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     id="Line 129"
@@ -237,7 +237,7 @@ function Home() {
                     x2="58"
                     y2="48"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     id="Line 130"
@@ -246,7 +246,7 @@ function Home() {
                     x2="28"
                     y2="39"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     id="Line 142"
@@ -255,7 +255,7 @@ function Home() {
                     x2="52"
                     y2="42"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <line
                     id="Line 131"
@@ -264,7 +264,7 @@ function Home() {
                     x2="52"
                     y2="54"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <rect
                     id="Rectangle 988"
@@ -312,7 +312,7 @@ function Home() {
                     x2="64"
                     y2="60"
                     stroke="#453F3C"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </g>
               </g>

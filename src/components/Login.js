@@ -5,14 +5,17 @@ import { AuthContext } from '../context/AuthContext'
 
 function Login() {
   const [userInput, setUserInput] = useState({ username: '', password: '' })
-  const { login, loggedIn } = useContext(AuthContext)
+  const { login, loggedIn, signup } = useContext(AuthContext)
   const { state } = useLocation()
   const nextPage = state?.nextPage
 
   const handleLogin = (e) => {
     e.preventDefault()
-    console.log(state)
     login(userInput, nextPage)
+  }
+
+  const handleSignup = () => {
+    signup(userInput)
   }
 
   if (loggedIn) return <Navigate to={nextPage ? nextPage : '/profile'} />
@@ -29,22 +32,29 @@ function Login() {
                 name='tab'
                 className='sign-in'
                 checked
+                readOnly
               />
               <label htmlFor='tab-1' className='tab'>
                 Login
               </label>
-              <input id='tab-2' type='radio' name='tab' className='sign-up' />
+              <input
+                id='tab-2'
+                type='radio'
+                name='tab'
+                className='sign-up'
+                readOnly
+              />
               <label htmlFor='tab-2' className='tab'>
                 Sign Up
               </label>
               <div className='login-space'>
-                <div className='login'>
+                <form className='login'>
                   <div className='group'>
                     <label htmlFor='user' className='label'>
                       Username
                     </label>
                     <input
-                      id='user'
+                      id='login-user'
                       type='text'
                       className='input'
                       name='username'
@@ -62,12 +72,13 @@ function Login() {
                       Password
                     </label>
                     <input
-                      id='pass'
+                      id='login-pass'
                       type='password'
                       name='password'
                       className='input'
                       data-type='password'
                       placeholder='Enter your password'
+                      autoComplete='on'
                       onChange={(e) =>
                         setUserInput({
                           username: userInput.username,
@@ -77,12 +88,7 @@ function Login() {
                     />
                   </div>
                   <div className='group'>
-                    <input
-                      id='check'
-                      type='checkbox'
-                      className='check'
-                      checked
-                    />
+                    <input id='check' type='checkbox' className='check' />
                     <label htmlFor='check'>
                       <span className='icon'></span> Keep me Signed in
                     </label>
@@ -99,8 +105,8 @@ function Login() {
                   <div className='foot'>
                     <a href='/'>Forgot Password?</a>
                   </div>
-                </div>
-                <div className='sign-up-form'>
+                </form>
+                <form className='sign-up-form'>
                   <div className='group'>
                     <label htmlFor='user' className='label'>
                       Username
@@ -108,11 +114,12 @@ function Login() {
                     <input
                       id='user'
                       type='text'
+                      name='username'
                       className='input'
                       placeholder='Create your Username'
                       onChange={(e) =>
                         setUserInput({
-                          name: e.target.value,
+                          username: e.target.value,
                           password: userInput.password,
                         })
                       }
@@ -128,10 +135,11 @@ function Login() {
                       className='input'
                       data-type='password'
                       placeholder='Create your password'
+                      autoComplete='on'
                       onChange={(e) =>
                         setUserInput({
-                          name: e.target.value,
-                          password: userInput.password,
+                          username: userInput.name,
+                          password: e.target.value,
                         })
                       }
                     />
@@ -142,14 +150,14 @@ function Login() {
                       type='submit'
                       className='button'
                       value='Sign Up'
-                      onClick={handleLogin}
+                      onClick={handleSignup}
                     />
                   </div>
                   <div className='hr'></div>
                   <div className='foot'>
                     <label htmlFor='tab-1'>Already Member?</label>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
