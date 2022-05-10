@@ -5,14 +5,17 @@ import { AuthContext } from '../context/AuthContext'
 
 function Login() {
   const [userInput, setUserInput] = useState({ username: '', password: '' })
-  const { login, loggedIn } = useContext(AuthContext)
+  const { login, loggedIn, signup } = useContext(AuthContext)
   const { state } = useLocation()
   const nextPage = state?.nextPage
 
   const handleLogin = (e) => {
     e.preventDefault()
-    console.log(state)
     login(userInput, nextPage)
+  }
+
+  const handleSignup = () => {
+    signup(userInput)
   }
 
   if (loggedIn) return <Navigate to={nextPage ? nextPage : '/profile'} />
@@ -111,11 +114,12 @@ function Login() {
                     <input
                       id='user'
                       type='text'
+                      name='username'
                       className='input'
                       placeholder='Create your Username'
                       onChange={(e) =>
                         setUserInput({
-                          name: e.target.value,
+                          username: e.target.value,
                           password: userInput.password,
                         })
                       }
@@ -134,8 +138,8 @@ function Login() {
                       autoComplete='on'
                       onChange={(e) =>
                         setUserInput({
-                          name: e.target.value,
-                          password: userInput.password,
+                          username: userInput.name,
+                          password: e.target.value,
                         })
                       }
                     />
@@ -146,7 +150,7 @@ function Login() {
                       type='submit'
                       className='button'
                       value='Sign Up'
-                      onClick={handleLogin}
+                      onClick={handleSignup}
                     />
                   </div>
                   <div className='hr'></div>

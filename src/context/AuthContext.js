@@ -57,6 +57,7 @@ function AuthState({ children }) {
       console.log(err);
     }
   };
+  
   const signup = async (user) => {
     try {
       const res = await axios.post("http://localhost:8000/user/register", user);
@@ -73,6 +74,7 @@ function AuthState({ children }) {
       console.log(err);
     }
   };
+
   const logout = () => {
     localStorage.removeItem("token");
     setLoggedIn(false);
