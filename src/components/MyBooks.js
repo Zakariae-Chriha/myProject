@@ -35,7 +35,9 @@ function MyBooks() {
   }, [])
 
   const getBookdetails = async () => {
-    let result = await fetch(`http://localhost:8000/read/${params.id}`)
+    let result = await fetch(
+      `https://communitybook.herokuapp.com/read/${params.id}`
+    )
     result = await result.json()
     setTitle(result.title)
     setAuthors(result.authors)
@@ -51,7 +53,9 @@ function MyBooks() {
   const getAllBooks = () => {
     setLoading(true)
     axios
-      .get(`http://localhost:8000/read?category=${category}&userid=${user._id}`)
+      .get(
+        `https://communitybook.herokuapp.com/read?category=${category}&userid=${user._id}`
+      )
       .then((response) => {
         setCards(response.data)
         setLoading(false)
@@ -61,7 +65,7 @@ function MyBooks() {
   }
 
   // const updateBooks = (id) => {
-  //   axios.put(`http://localhost:8000/update/${id}`, {
+  //   axios.put(`https://communitybook.herokuapp.com/update/${id}`, {
   //     userImage: userImageUrl,
   //     title: title,
   //     authors: authors,
@@ -74,7 +78,7 @@ function MyBooks() {
   // }
 
   const deletebooks = (id) => {
-    axios.delete(`http://localhost:8000/delete/${id}`)
+    axios.delete(`https://communitybook.herokuapp.com/delete/${id}`)
     getAllBooks()
   }
 

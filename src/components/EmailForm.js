@@ -1,59 +1,59 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react'
+import axios from 'axios'
 
 const EmailForm = () => {
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState('')
   const [user, setUser] = useState({
-    to: "",
-    subject: "",
-    description: "",
-  });
+    to: '',
+    subject: '',
+    description: '',
+  })
 
-  const { to, subject, description } = user;
+  const { to, subject, description } = user
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+    setUser({ ...user, [e.target.name]: e.target.value })
+  }
 
   const onSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     await axios
-      .post("http://localhost:8000/send_mail/", user)
-      .then((response) => setMsg(response.data.respMesg));
-  };
+      .post('https://communitybook.herokuapp.com/send_mail/', user)
+      .then((response) => setMsg(response.data.respMesg))
+  }
   return (
-    <div className="container">
-      <div class="row">
-        <div className="col-sm-4 mx-auto shadow p-5 mt-5">
-          <h4 className="text-center mb-2">Send E Mail </h4>
-          <p class="mb-3 mt-2" style={{ color: "green", marginLeft: "57px" }}>
+    <div className='container'>
+      <div class='row'>
+        <div className='col-sm-4 mx-auto shadow p-5 mt-5'>
+          <h4 className='text-center mb-2'>Send E Mail </h4>
+          <p class='mb-3 mt-2' style={{ color: 'green', marginLeft: '57px' }}>
             <b>{msg}</b>
           </p>
-          <div className="form-group mb-3">
+          <div className='form-group mb-3'>
             <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="To"
-              name="to"
+              type='text'
+              className='form-control form-control-lg'
+              placeholder='To'
+              name='to'
               onChange={onInputChange}
               value={user.to}
             />
           </div>
-          <div className="form-group  mb-4 ">
+          <div className='form-group  mb-4 '>
             <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Subject"
-              name="subject"
+              type='text'
+              className='form-control form-control-lg'
+              placeholder='Subject'
+              name='subject'
               onChange={onInputChange}
               value={subject}
             />
           </div>
-          <div className="form-group  mb-4">
+          <div className='form-group  mb-4'>
             <textarea
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Description"
-              name="description"
+              type='text'
+              className='form-control form-control-lg'
+              placeholder='Description'
+              name='description'
               onChange={onInputChange}
               value={description}
             />
@@ -61,15 +61,14 @@ const EmailForm = () => {
 
           <button
             onClick={onSubmit}
-            className="btn btn-primary btn-block "
-            style={{ marginLeft: "100px" }}
-          >
+            className='btn btn-primary btn-block '
+            style={{ marginLeft: '100px' }}>
             Send Mail
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EmailForm;
+export default EmailForm

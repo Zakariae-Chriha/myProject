@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import AddBook from "./components/AddBook";
 import BooksListCommunity from "./components/BooksListCommunity";
-import Bookgoogle from "./components/bookgoogle";
+import Bookgoogle from "./components/Bookgoogle";
 import EmailForm from "./components/EmailForm";
 import Profile from "./components/Profile";
 import MyBooks from "./components/MyBooks";

@@ -32,12 +32,14 @@ function UpdateBook() {
   }, [])
 
   // const getOneBook = () => {
-  //  axios.get(`http://localhost:8000/read/${params.id}`).then((response) => {
+  //  axios.get(`https://communitybook.herokuapp.com/read/${params.id}`).then((response) => {
   //  setBookslist(response.data);
   // });
   // };
   const getOneBook = async () => {
-    let result = await fetch(`http://localhost:8000/read/${params.id}`)
+    let result = await fetch(
+      `https://communitybook.herokuapp.com/read/${params.id}`
+    )
     result = await result.json()
     console.log(result)
     setTitle(result.title)
@@ -52,13 +54,13 @@ function UpdateBook() {
 
   // const getAllBooks = () => {
   //   axios
-  //     .get('http://localhost:8000/read')
+  //     .get('https://communitybook.herokuapp.com/read')
   //     .then((response) => setBookslist(response.data))
   //     .catch((Error) => console.log(Error))
   // }
   console.log('user', user)
   const updateBooks = (id) => {
-    axios.put(`http://localhost:8000/update/${params.id}`, {
+    axios.put(`https://communitybook.herokuapp.com/update/${params.id}`, {
       userImage: userImageUrl,
       title: title,
       authors: authors,
@@ -74,7 +76,7 @@ function UpdateBook() {
   }
 
   // const deletebooks = (id) => {
-  //   axios.delete(`http://localhost:8000/delete/${id}`)
+  //   axios.delete(`https://communitybook.herokuapp.com/delete/${id}`)
   //   getAllBooks()
   // }
 
@@ -83,7 +85,11 @@ function UpdateBook() {
     formData.append('profile_pic', e.target.files[0])
 
     axios
-      .post('http://localhost:8000/upload-profile-pic', formData, {})
+      .post(
+        'https://communitybook.herokuapp.com/upload-profile-pic',
+        formData,
+        {}
+      )
       .then((res) => {
         setUserImageUrl(res.data)
       })
@@ -94,7 +100,7 @@ function UpdateBook() {
 
   // const handelClick = async () => {
   //   axios
-  //     .post('http://localhost:8000/insert', {
+  //     .post('https://communitybook.herokuapp.com/insert', {
   //       userImage: userImageUrl,
   //       title: title,
   //       authors: authors,
